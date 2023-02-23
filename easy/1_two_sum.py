@@ -4,27 +4,17 @@
 # You may assume that each input would have exactly one solution, and you may not use the same element twice.
 #
 # You can return the answer in any order.
-#
-class Solution:
-    def twoSum(self, nums: list[int], target: int) -> list[int]:
-        result = list()
-        for el in nums:
-            if (el <= target or el >= target) and (target - el) in nums:
-                if el == (target - el) and nums.count(el) == 1:
-                    continue
-                elif el == (target - el) and nums.count(el) == 2:
-                    result.append(nums.index(el))
-                    nums[nums.index(el)] = el + 1
-                    result.append(nums.index(target - el))
-                    break
-                else:
-                    result = [nums.index(el), nums.index(target - el)]
-                    break
-        return result
 
 
 class Solution:
     def twoSum(self, nums: list[int], target: int) -> list[int]:
+        '''
+        Space complexity O(n)
+        Time complexity O(n)
+        :param nums:
+        :param target:
+        :return:
+        '''
         hashmap = {}
 
         for i in range(len(nums)):

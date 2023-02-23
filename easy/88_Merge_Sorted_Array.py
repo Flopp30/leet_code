@@ -10,29 +10,34 @@
 
 class Solution:
     def merge(self, nums1: list[int], m: int, nums2: list[int], n: int) -> None:
-        i = m - 1
-        j = n - 1
-        k = m + n - 1
-        while i >= 0 and j >= 0:
-            if nums1[i] >= nums2[j]:
-                nums1[k] = nums1[i]
-                i -= 1
+        '''
+        Space complexity O(1)
+        Time complexity O(n + m)
+        '''
+        idx_1 = m - 1
+        idx_2 = n - 1
+        cursor = m + n - 1
+        while idx_1 >= 0 and idx_2 >= 0:
+            if nums1[idx_1] >= nums2[idx_2]:
+                nums1[cursor] = nums1[idx_1]
+                idx_1 -= 1
             else:
-                nums1[k] = nums2[j]
-                j -= 1
-            k -= 1
-        while i >= 0:
-            nums1[k] = nums1[i]
-            k -= 1
-            i -= 1
-        while j >= 0:
-            nums1[k] = nums2[j]
-            j -= 1
-            k -= 1
+                nums1[cursor] = nums2[idx_2]
+                idx_2 -= 1
+            cursor -= 1
+        while idx_1 >= 0:
+            nums1[cursor] = nums1[idx_1]
+            idx_1 -= 1
+            cursor -= 1
+        while idx_2 >= 0:
+            nums1[cursor] = nums2[idx_2]
+            idx_2 -= 1
+            cursor -= 1
 
 
-a = Solution()
-nums1_ = [0]
-nums2_ = [1]
-(a.merge(nums1_, 0, nums2_, 1))
-print(nums1_)
+if __name__ == '__main__':
+    a = Solution()
+
+    nums1_ = [1, 2, 3, 0, 0, 0]
+    a.merge(nums1_, m=3, nums2=[2, 5, 6], n=3)
+    print(nums1_)  # 1 2 2 3 5 6
