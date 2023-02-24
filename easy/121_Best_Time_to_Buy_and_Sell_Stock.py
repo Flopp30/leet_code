@@ -7,6 +7,12 @@
 
 class Solution:
     def maxProfit(self, prices: list[int]) -> int:
+        '''
+        Space complexity O(1)
+        Time complexity O(n)
+        :param prices:
+        :return:
+        '''
         left, right = 0, 1
         max_profit = 0
         while right < len(prices):
@@ -17,3 +23,21 @@ class Solution:
                 left = right
             right += 1
         return max_profit
+
+    def maxProfit2(self, prices: list[int]) -> int:
+        '''
+        Space complexity O(1)
+        Time complexity O(n)
+        :param prices:
+        :return:
+        '''
+        if not prices:
+            return 0
+        min_price = prices[0]
+        profit = 0
+        for i in range(1, len(prices)):
+            if prices[i] - min_price > profit:
+                profit = prices[i] - min_price
+            if prices[i] < min_price:
+                min_price = prices[i]
+        return profit

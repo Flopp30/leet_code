@@ -12,8 +12,12 @@ class ListNode:
 
 class Solution:
     def mergeTwoLists(self, list1: ListNode, list2: ListNode) -> ListNode:
+        '''
+        Time complexity O(max(N, M) - N - length list1, M - length list2
+        Space Complexity O(N+M)
+        '''
         cur = result = ListNode()
-        while list2 and list1:
+        while list2 or list1:
             if list1.val < list2.val:
                 cur.next = list1
                 list1, cur = list1.next, list1
