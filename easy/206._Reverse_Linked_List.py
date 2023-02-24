@@ -15,19 +15,18 @@ class ListNode:
 
 
 class Solution:
-    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+
+    def reverseList2(self, head: Optional[ListNode]) -> Optional[ListNode]:
         '''
         Time complexity O(n)
-        Space complexity O(n)
+        Space complexity O(1)
         '''
-        temp = list()
-        res = cur = ListNode()
-        while head:
-            temp.append(head.val)
-            head = head.next
-        for el in reversed(temp):
-            cur.next = ListNode()
-            cur = cur.next
-            cur.val = el
+        prev = None
+        current = head
+        while current:
+            nxt = current.next
+            current.next = prev
+            prev = current
+            current = nxt
 
-        return res.next
+        return prev
