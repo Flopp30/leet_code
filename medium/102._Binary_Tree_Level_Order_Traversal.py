@@ -14,8 +14,26 @@ class TreeNode:
         
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> list[list[int]]:
-        result = list()
-        temp_list = list()
+        '''
+        Time comp O(n)
+        Space O(2n)
+        :param root:
+        :return:
+        '''
+        if not root:
+            return None
+        queue, res = [root], []
+        while queue:
+            level = []
+            length = len(queue)
+            for i in range(length):
+                curr_node = queue.pop(0)
+                level.append(curr_node.val)
+                if curr_node.left:
+                    queue.append(curr_node.left)
+                if curr_node.right:
+                    queue.append(curr_node.right)
 
-
+            res.append(level)
+        return res
 
