@@ -17,3 +17,20 @@ class Solution:
         tree_values.append(root.val)
 
         return tree_values
+
+    def postorderTraversal2(self, root: TreeNode) -> list[int]:
+        if not root:
+            return []
+
+        stack = [root]
+        result = []
+
+        while stack:
+            node = stack.pop()
+            result.append(node.val)
+            if node.left:
+                stack.append(node.left)
+            if node.right:
+                stack.append(node.right)
+
+        return result[::-1]

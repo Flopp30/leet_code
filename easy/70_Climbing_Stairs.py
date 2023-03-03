@@ -1,58 +1,49 @@
 # You are climbing a staircase. It takes n steps to reach the top.
 #
 # Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
-
-# Моё первое бинарное дерево (не судите строго!). Решение верное, но долго для больших значений
-# counter__ = 0
 #
-# class TreeNode:
-#     def __init__(self, value):
-#         self.value = value
-#         self.left = None
-#         self.right = None
-#
-#     def tree_maker(self, n):
-#         if n == 0:
-#             global counter__
-#             counter__ += 1
-#             return
-#         if n > 1:
-#             self.left = TreeNode(n - 2)
-#             self.left.tree_maker(n - 2)
-#         self.right = TreeNode(n - 1)
-#         self.right.tree_maker(n - 1)
-#
-#
-# class Solution:
-#     def climbStairs(self, n: int) -> int:
-#         global counter__
-#         counter__ = 0
-#         tree = TreeNode(n)
-#         tree.tree_maker(n)
-#         return counter__
-# решение через цикл
-# class Solution:
-#     def climbStairs(self, n: int) -> int:
-#         lst = [0, 1, 2, 3]
-#         if n < 4:
-#             return lst[n]
-#         for i in range(3, n + 1):
-#             lst.append(lst[i] + lst[i - 1])
-#         return lst[n]
-from functools import lru_cache
-
+# Input: n = 3
+# Output: 3
+# Explanation: There are three ways to climb to the top.
+# 1. 1 step + 1 step + 1 step
+# 2. 1 step + 2 steps
+# 3. 2 steps + 1 step
 
 class Solution:
-    @lru_cache
     def climbStairs(self, n: int) -> int:
         if n <= 3:
             return n
-        else:
-            return self.climbStairs(n - 1) + self.climbStairs(n - 2)
+        return self.climbStairs(n - 1) + self.climbStairs(n - 2)
+
+    def climbStairs2(self, n: int) -> int:
+        '''
+        Space complexity O(n)
+        Time complexity O(n)
+        :param n:
+        :return:
+        '''
+        lst = [0, 1, 2, 3]
+        if n < 4:
+            return lst[n]
+        for i in range(3, n + 1):
+            lst.append(lst[i] + lst[i - 1])
+        return lst[n]
+
+    def climbStairs3(self, n: int) -> int:
+        '''
+        Space complexity O(1)
+        Time complexity O(n)
+        :param n:
+        :return:
+        '''
+        one, two = 1, 1
+        for i in range(n):
+            temp = one
+            one += two
+            two = temp
+        return two
 
 
-a = Solution()
-print(a.climbStairs(50))
-'''
-1, 2, 3, 5, 8, 13, 21, 31 .. 
-'''
+if __name__ == '__main__':
+    a = Solution()
+    print(a.climbStairs(44))
