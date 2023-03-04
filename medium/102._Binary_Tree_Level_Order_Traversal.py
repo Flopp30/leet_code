@@ -17,8 +17,6 @@ class Solution:
         '''
         Time comp O(n)
         Space O(2n)
-        :param root:
-        :return:
         '''
         if not root:
             return None
