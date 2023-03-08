@@ -1,2 +1,2 @@
 # Сборник решенных задач с leetcode.
-![](https://leetcode.com/static/images/LeetCode_Sharing.png)
+![LeetCode Stats](https://leetcard.jacoblin.cool/ArtPos?theme=nord&font=Noto%20Serif%20Hebrew&ext=heatmap)
