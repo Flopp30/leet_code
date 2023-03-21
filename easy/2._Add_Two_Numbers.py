@@ -18,6 +18,7 @@ class ListNode:
         self.val = val
         self.next = next_
 
+
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
         dummy = ListNode()
@@ -35,5 +36,3 @@ class Solution:
             curr.next = ListNode(val)
             curr = curr.next
         return dummy.next
-
-
