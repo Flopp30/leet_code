@@ -20,7 +20,14 @@ import (
 //Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 func merge(intervals [][]int) [][]int {
 	if len(intervals) <= 1 {
+
 		return intervals
+	}
+	sortIntervals := func(intervals [][]int) {
+		sort.Slice(intervals, func(i, j int) bool {
+
+			return intervals[i][0] < intervals[j][0]
+		})
 	}
 
 	sortIntervals(intervals)
@@ -37,12 +44,6 @@ func merge(intervals [][]int) [][]int {
 	}
 
 	return mergedIntervals
-}
-
-func sortIntervals(intervals [][]int) {
-	sort.Slice(intervals, func(i, j int) bool {
-		return intervals[i][0] < intervals[j][0]
-	})
 }
 
 func main() {

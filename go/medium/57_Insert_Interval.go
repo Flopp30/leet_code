@@ -23,11 +23,13 @@ import (
 //Output: [[1,2],[3,10],[12,16]]
 //Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
 func insert(intervals [][]int, newInterval []int) [][]int {
+	sortIntervals := func(intervals [][]int) {
+		sort.Slice(intervals, func(i, j int) bool {
+			return intervals[i][0] < intervals[j][0]
+		})
+	}
 	intervals = append(intervals, newInterval)
-	fmt.Println(intervals)
-	sorttIntervals(intervals)
-	fmt.Println(intervals)
-
+	sortIntervals(intervals)
 	mergedIntervals := make([][]int, 0, len(intervals))
 	mergedIntervals = append(mergedIntervals, intervals[0])
 	for _, interval := range intervals[1:] {
@@ -40,28 +42,20 @@ func insert(intervals [][]int, newInterval []int) [][]int {
 	return mergedIntervals
 }
 
-func sorttIntervals(intervals [][]int) {
-	sort.Slice(intervals, func(i, j int) bool {
-		return intervals[i][0] < intervals[j][0]
-	})
-}
-
-func min(i, j int) int {
-	if i < j {
-		return i
-	}
-	return j
-}
-func max(i, j int) int {
-	if i > j {
-		return i
-	}
-	return j
-}
-
 func otherSolution(intervals [][]int, newInterval []int) [][]int {
 	output := [][]int{}
-
+	min := func(i, j int) int {
+		if i < j {
+			return i
+		}
+		return j
+	}
+	max := func(i, j int) int {
+		if i > j {
+			return i
+		}
+		return j
+	}
 	for i := 0; i < len(intervals); i++ {
 		if newInterval[1] < intervals[i][0] {
 			output = append(output, newInterval)
