@@ -10,10 +10,10 @@ import "fmt"
 //Input: head = [1, 1, 2, 3,3]
 //Output: [1, 2,3]
 
-//type ListNode struct {
-//	Val  int
-//	Next *ListNode
-//}
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
 
 func deleteDuplicates(head *ListNode) *ListNode {
 	walker := head

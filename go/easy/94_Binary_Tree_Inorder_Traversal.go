@@ -16,11 +16,11 @@ import "fmt"
 // Input: root = [1]
 // Output: [1]
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
+//type TreeNode struct {
+//	Val   int
+//	Left  *TreeNode
+//	Right *TreeNode
+//}
 
 func helper(root *TreeNode, res []int) []int {
 	if root == nil {

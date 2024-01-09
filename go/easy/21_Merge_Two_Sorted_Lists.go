@@ -17,10 +17,10 @@ package main
 //Input: list1 = [], list2 = [0]
 //Output: [0]
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+//type ListNode struct {
+//	Val  int
+//	Next *ListNode
+//}
 
 func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 	res := &ListNode{}
